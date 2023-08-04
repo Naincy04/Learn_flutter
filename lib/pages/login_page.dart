@@ -6,7 +6,7 @@ class LogInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Color.fromARGB(255, 255, 255, 255),
+      color: const Color.fromARGB(255, 255, 255, 255),
       child: Column(
         children: [
           Image.asset(
@@ -33,9 +33,12 @@ class LogInPage extends StatelessWidget {
                 TextFormField(
                   decoration: const InputDecoration(labelText: "Password"),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text("LogIn"),
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("LogIn"),
+                  ),
                 ),
               ],
             ),
@@ -45,3 +48,5 @@ class LogInPage extends StatelessWidget {
     );
   }
 }
+
+void logIn() {}
