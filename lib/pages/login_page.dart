@@ -10,6 +10,8 @@ class LogInPage extends StatefulWidget {
 
 class _LogInPageState extends State<LogInPage> {
   String name = "";
+  bool change_button = false;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -51,22 +53,38 @@ class _LogInPageState extends State<LogInPage> {
                   Padding(
                     padding: const EdgeInsets.all(25.0),
                     child: InkWell(
-                      child: Container(
+                      onTap: () async {
+                        setState(() {
+                          change_button = true;
+                        });
+                        await Future.delayed(
+                          const Duration(seconds: 1),
+                        );
+                        Navigator.pushNamed(context, MyRoutes.homeRoute);
+                      },
+                      child: AnimatedContainer(
+                        duration: const Duration(seconds: 1),
                         alignment: Alignment.center,
                         height: 40,
-                        width: 110,
+                        width: change_button ? 40 : 110,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius:
+                              BorderRadius.circular(change_button ? 40 : 8),
                           color: Color.fromARGB(255, 131, 80, 250),
                         ),
-                        child: const Text(
-                          "Login",
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
+                        child: change_button
+                            ? const Icon(
+                                Icons.done,
+                                color: Colors.white,
+                              )
+                            : const Text(
+                                "Login",
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 255, 255, 255),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
                       ),
                     ),
                   )
