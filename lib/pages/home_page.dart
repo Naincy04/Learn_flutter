@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/Models/items.dart';
 import 'package:learn_flutter/widgets.dart/drawer.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,7 +13,12 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.white,
         title: const Text("Catalog app"),
       ),
-      body: const Text("Hello Welcome to My world"),
+      body: ListView.builder(
+        itemCount: CatalogModel.items.length,
+        itemBuilder: (context, index) {
+          return const HomePage();
+        },
+      ),
       drawer: const MyDrawer(),
     );
   }
